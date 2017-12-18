@@ -1,2 +1,5 @@
 .vs/*
-/FreeRTOSTest1/Debug/*
+**/Debug/
+**/Release/
+**/Debug/*
+**/Release/*
