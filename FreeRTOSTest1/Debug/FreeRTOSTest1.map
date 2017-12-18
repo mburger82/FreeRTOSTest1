@@ -659,7 +659,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x37ae
+.text           0x00000000     0x37d2
  *(.vectors)
  .vectors       0x00000000      0x1fc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a3u/avrxmega6/crtatxmega128a3u.o
                 0x00000000                __vectors
@@ -1038,63 +1038,66 @@ END GROUP
  .text.vApplicationIdleHook
                 0x00002f18       0x62 source/main.o
                 0x00002f18                vApplicationIdleHook
- .text.main     0x00002f7a      0x17a source/main.o
+ .text.main     0x00002f7a       0xfa source/main.o
                 0x00002f7a                main
  .text.vLedBlink
-                0x000030f4       0x9e source/main.o
-                0x000030f4                vLedBlink
+                0x00003074       0x9e source/main.o
+                0x00003074                vLedBlink
  .text.get_mem_unused
-                0x00003192       0x56 source/mem_check.o
-                0x00003192                get_mem_unused
+                0x00003112       0x56 source/mem_check.o
+                0x00003112                get_mem_unused
  .text.__vector_77
-                0x000031e8       0x5c source/nested_isr.o
-                0x000031e8                __vector_77
+                0x00003168       0x5c source/nested_isr.o
+                0x00003168                __vector_77
  .text.__vector_83
-                0x00003244       0x5c source/nested_isr.o
-                0x00003244                __vector_83
+                0x000031c4       0x5c source/nested_isr.o
+                0x000031c4                __vector_83
  .text.initChannelQueues
-                0x000032a0       0xac source/usarttasks.o
-                0x000032a0                initChannelQueues
- .text.sm_init  0x0000334c       0x24 source/utils.o
-                0x0000334c                sm_init
+                0x00003220       0xac source/usarttasks.o
+                0x00003220                initChannelQueues
+ .text.getResetReason
+                0x000032cc       0xa4 source/utils.o
+                0x000032cc                getResetReason
+ .text.sm_init  0x00003370       0x24 source/utils.o
+                0x00003370                sm_init
  .text.sm_setState
-                0x00003370       0x26 source/utils.o
-                0x00003370                sm_setState
+                0x00003394       0x26 source/utils.o
+                0x00003394                sm_setState
  .text.internalSetState
-                0x00003396      0x12a source/utils.o
+                0x000033ba      0x12a source/utils.o
  .text.avr-libc
-                0x000034c0      0x21a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(strtoul.o)
-                0x000034c0                strtoul
+                0x000034e4      0x21a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(strtoul.o)
+                0x000034e4                strtoul
  .text.avr-libc
-                0x000036da       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(isspace.o)
-                0x000036da                isspace
+                0x000036fe       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(isspace.o)
+                0x000036fe                isspace
  .text.avr-libc
-                0x000036ec       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(memcpy.o)
-                0x000036ec                memcpy
+                0x00003710       0x12 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(memcpy.o)
+                0x00003710                memcpy
  .text.avr-libc
-                0x000036fe        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(memset.o)
-                0x000036fe                memset
+                0x00003722        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(memset.o)
+                0x00003722                memset
  .text.avr-libc
-                0x0000370c        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(cty_isfalse.o)
-                0x0000370c                __ctype_isfalse
-                0x00003710                __ctype_istrue
+                0x00003730        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(cty_isfalse.o)
+                0x00003730                __ctype_isfalse
+                0x00003734                __ctype_istrue
  .text.libgcc.mul
-                0x00003712       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_mulsi3.o)
-                0x00003712                __mulsi3
+                0x00003736       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_mulsi3.o)
+                0x00003736                __mulsi3
  .text.libgcc.div
-                0x00003732       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_udivmodsi4.o)
-                0x00003732                __udivmodsi4
+                0x00003756       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_udivmodsi4.o)
+                0x00003756                __udivmodsi4
  .text.libgcc.mul
-                0x00003776       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_muluhisi3.o)
-                0x00003776                __muluhisi3
+                0x0000379a       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_muluhisi3.o)
+                0x0000379a                __muluhisi3
  .text.libgcc.mul
-                0x0000378c       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_umulhisi3.o)
-                0x0000378c                __umulhisi3
-                0x000037aa                . = ALIGN (0x2)
+                0x000037b0       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_umulhisi3.o)
+                0x000037b0                __umulhisi3
+                0x000037ce                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000037aa        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_exit.o)
-                0x000037aa                _exit
-                0x000037aa                exit
+ .fini9         0x000037ce        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_exit.o)
+                0x000037ce                _exit
+                0x000037ce                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -1113,11 +1116,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000037aa        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_exit.o)
+ .fini0         0x000037ce        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_exit.o)
  *(.fini0)
-                0x000037ae                _etext = .
+                0x000037d2                _etext = .
 
-.data           0x00802000        0xe load address 0x000037ae
+.data           0x00802000        0xe load address 0x000037d2
                 0x00802000                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -1215,8 +1218,8 @@ END GROUP
  COMMON         0x00802ca5        0x2 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega6\libc.a(errno.o)
                 0x00802ca5                errno
                 0x00802ca7                PROVIDE (__bss_end, .)
-                0x000037ae                __data_load_start = LOADADDR (.data)
-                0x000037bc                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000037d2                __data_load_start = LOADADDR (.data)
+                0x000037e0                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00802ca7        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -1305,7 +1308,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x6f0
+.debug_aranges  0x00000000      0x6f8
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x68 driver/clksys_driver.o
@@ -1338,12 +1341,12 @@ END GROUP
  .debug_aranges
                 0x00000660       0x40 source/usarttasks.o
  .debug_aranges
-                0x000006a0       0x50 source/utils.o
+                0x000006a0       0x58 source/utils.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0xb369
+.debug_info     0x00000000     0xb400
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000     0x3409 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a3u/avrxmega6/crtatxmega128a3u.o
  .debug_info    0x00003409      0x5f4 driver/clksys_driver.o
@@ -1357,13 +1360,13 @@ END GROUP
  .debug_info    0x00007581     0x16dc FreeRTOS/tasks.o
  .debug_info    0x00008c5d      0x27c source/errorHandlers.o
  .debug_info    0x00008ed9      0xa82 source/initializations.o
- .debug_info    0x0000995b      0x489 source/main.o
- .debug_info    0x00009de4       0xd2 source/mem_check.o
- .debug_info    0x00009eb6      0xcc0 source/nested_isr.o
- .debug_info    0x0000ab76      0x4f9 source/usarttasks.o
- .debug_info    0x0000b06f      0x2fa source/utils.o
+ .debug_info    0x0000995b      0x46c source/main.o
+ .debug_info    0x00009dc7       0xd2 source/mem_check.o
+ .debug_info    0x00009e99      0xcc0 source/nested_isr.o
+ .debug_info    0x0000ab59      0x4f9 source/usarttasks.o
+ .debug_info    0x0000b052      0x3ae source/utils.o
 
-.debug_abbrev   0x00000000     0x481d
+.debug_abbrev   0x00000000     0x487c
  *(.debug_abbrev)
  .debug_abbrev  0x00000000     0x3148 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a3u/avrxmega6/crtatxmega128a3u.o
  .debug_abbrev  0x00003148      0x159 driver/clksys_driver.o
@@ -1377,13 +1380,13 @@ END GROUP
  .debug_abbrev  0x00003ce1      0x26d FreeRTOS/tasks.o
  .debug_abbrev  0x00003f4e      0x14d source/errorHandlers.o
  .debug_abbrev  0x0000409b      0x1c2 source/initializations.o
- .debug_abbrev  0x0000425d      0x136 source/main.o
- .debug_abbrev  0x00004393       0x98 source/mem_check.o
- .debug_abbrev  0x0000442b      0x12f source/nested_isr.o
- .debug_abbrev  0x0000455a      0x174 source/usarttasks.o
- .debug_abbrev  0x000046ce      0x14f source/utils.o
+ .debug_abbrev  0x0000425d      0x147 source/main.o
+ .debug_abbrev  0x000043a4       0x98 source/mem_check.o
+ .debug_abbrev  0x0000443c      0x12f source/nested_isr.o
+ .debug_abbrev  0x0000456b      0x174 source/usarttasks.o
+ .debug_abbrev  0x000046df      0x19d source/utils.o
 
-.debug_line     0x00000000     0x47f1
+.debug_line     0x00000000     0x48f6
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x39d C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a3u/avrxmega6/crtatxmega128a3u.o
  .debug_line    0x0000039d      0x2c4 driver/clksys_driver.o
@@ -1397,13 +1400,13 @@ END GROUP
  .debug_line    0x00002208     0x14a7 FreeRTOS/tasks.o
  .debug_line    0x000036af      0x262 source/errorHandlers.o
  .debug_line    0x00003911      0x39d source/initializations.o
- .debug_line    0x00003cae      0x33c source/main.o
- .debug_line    0x00003fea       0x8f source/mem_check.o
- .debug_line    0x00004079      0x1af source/nested_isr.o
- .debug_line    0x00004228      0x33f source/usarttasks.o
- .debug_line    0x00004567      0x28a source/utils.o
+ .debug_line    0x00003cae      0x311 source/main.o
+ .debug_line    0x00003fbf       0x8f source/mem_check.o
+ .debug_line    0x0000404e      0x1af source/nested_isr.o
+ .debug_line    0x000041fd      0x33f source/usarttasks.o
+ .debug_line    0x0000453c      0x3ba source/utils.o
 
-.debug_frame    0x00000000     0x1928
+.debug_frame    0x00000000     0x1948
  *(.debug_frame)
  .debug_frame   0x00000000      0x15c driver/clksys_driver.o
  .debug_frame   0x0000015c      0x1d0 driver/freertos_usart_driver.o
@@ -1420,45 +1423,45 @@ END GROUP
  .debug_frame   0x00001658       0x44 source/mem_check.o
  .debug_frame   0x0000169c       0xcc source/nested_isr.o
  .debug_frame   0x00001768       0xcc source/usarttasks.o
- .debug_frame   0x00001834       0xf4 source/utils.o
+ .debug_frame   0x00001834      0x114 source/utils.o
 
-.debug_str      0x00000000     0x6005
+.debug_str      0x00000000     0x60e5
  *(.debug_str)
  .debug_str     0x00000000     0x223b C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega128a3u/avrxmega6/crtatxmega128a3u.o
  .debug_str     0x0000223b      0x77b driver/clksys_driver.o
                                 0x7c2 (size before relaxing)
- .debug_str     0x000029b6      0x389 driver/freertos_usart_driver.o
+ .debug_str     0x000029b6      0x3e3 driver/freertos_usart_driver.o
                                 0x526 (size before relaxing)
- .debug_str     0x00002d3f      0xde3 driver/port_driver.o
+ .debug_str     0x00002d99      0xde3 driver/port_driver.o
                                 0xf65 (size before relaxing)
- .debug_str     0x00003b22      0xb10 driver/TC_driver.o
+ .debug_str     0x00003b7c      0xb10 driver/TC_driver.o
                                 0xcbf (size before relaxing)
- .debug_str     0x00004632       0xbe FreeRTOS/heap_1.o
+ .debug_str     0x0000468c       0xbe FreeRTOS/heap_1.o
                                 0x21e (size before relaxing)
- .debug_str     0x000046f0      0x13c FreeRTOS/list.o
+ .debug_str     0x0000474a      0x13c FreeRTOS/list.o
                                 0x2b6 (size before relaxing)
- .debug_str     0x0000482c      0x1e0 FreeRTOS/port.o
+ .debug_str     0x00004886      0x1e0 FreeRTOS/port.o
                                 0x822 (size before relaxing)
- .debug_str     0x00004a0c      0x3cf FreeRTOS/queue.o
+ .debug_str     0x00004a66      0x3cf FreeRTOS/queue.o
                                 0x737 (size before relaxing)
- .debug_str     0x00004ddb      0xa5b FreeRTOS/tasks.o
+ .debug_str     0x00004e35      0xa5b FreeRTOS/tasks.o
                                 0xe92 (size before relaxing)
- .debug_str     0x00005836      0x101 source/errorHandlers.o
+ .debug_str     0x00005890      0x101 source/errorHandlers.o
                                 0x2f4 (size before relaxing)
- .debug_str     0x00005937      0x2ad source/initializations.o
+ .debug_str     0x00005991      0x2ad source/initializations.o
                                 0xc47 (size before relaxing)
- .debug_str     0x00005be4      0x17a source/main.o
-                                0x481 (size before relaxing)
- .debug_str     0x00005d5e       0x3b source/mem_check.o
+ .debug_str     0x00005c3e      0x1e5 source/main.o
+                                0x4c8 (size before relaxing)
+ .debug_str     0x00005e23       0x3b source/mem_check.o
                                 0x1b0 (size before relaxing)
- .debug_str     0x00005d99       0x7e source/nested_isr.o
+ .debug_str     0x00005e5e       0x7e source/nested_isr.o
                                 0x6cd (size before relaxing)
- .debug_str     0x00005e17      0x186 source/usarttasks.o
+ .debug_str     0x00005edc      0x186 source/usarttasks.o
                                 0x50b (size before relaxing)
- .debug_str     0x00005f9d       0x68 source/utils.o
-                                0x24e (size before relaxing)
+ .debug_str     0x00006062       0x83 source/utils.o
+                                0x31b (size before relaxing)
 
-.debug_loc      0x00000000     0x3400
+.debug_loc      0x00000000     0x3448
  *(.debug_loc)
  .debug_loc     0x00000000      0x2c3 driver/clksys_driver.o
  .debug_loc     0x000002c3      0x355 driver/freertos_usart_driver.o
@@ -1475,7 +1478,7 @@ END GROUP
  .debug_loc     0x00002e94       0x48 source/mem_check.o
  .debug_loc     0x00002edc      0x1a0 source/nested_isr.o
  .debug_loc     0x0000307c      0x18e source/usarttasks.o
- .debug_loc     0x0000320a      0x1f6 source/utils.o
+ .debug_loc     0x0000320a      0x23e source/utils.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -1495,7 +1498,7 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x5f0
+.debug_ranges   0x00000000      0x5f8
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x58 driver/clksys_driver.o
  .debug_ranges  0x00000058       0x70 driver/freertos_usart_driver.o
@@ -1512,7 +1515,7 @@ END GROUP
  .debug_ranges  0x00000540       0x18 source/mem_check.o
  .debug_ranges  0x00000558       0x28 source/nested_isr.o
  .debug_ranges  0x00000580       0x30 source/usarttasks.o
- .debug_ranges  0x000005b0       0x40 source/utils.o
+ .debug_ranges  0x000005b0       0x48 source/utils.o
 
 .debug_macro
  *(.debug_macro)
