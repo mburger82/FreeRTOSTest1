@@ -343,18 +343,6 @@ void disableUnusedModules(void)
 	PR.PRPD |= PR_HIRES_bm;
 	PR.PRPE |= PR_HIRES_bm;
 
-	#if NESTING_TEST == 0
-	PR.PRPD |= PR_TC0_bm;		// TCD0 off
-	PR.PRPD |= PR_TC1_bm;		// TCD1 off
-	#endif
-
-	#if SERIAL_SIMULATION == 0
-                                // TCC0 is tick timer, always on
-	PR.PRPC |= PR_TC1_bm;       // TCC1 off
-	PR.PRPE |= PR_TC0_bm;		// TCE0 off
-	                            // TCE1 does not exist in 32A4
-	#endif
-
 	// disable SPI, TWI
 	//
 	// all uarts are active !
@@ -368,9 +356,6 @@ void disableUnusedModules(void)
 	NVM.CTRLB |= NVM_EPRM_bm | NVM_FPRM_bm;
 
 	DISABLE_JTAG();
-
-#elif defined(__AVR_ATxmega128A1__)
-//  for 128A1, there are more pins and timers to configure!
 #elif defined(__AVR_ATxmega128A3U__)
 	
 	// PRGEN general power reduction register
@@ -411,18 +396,6 @@ void disableUnusedModules(void)
 	PR.PRPC |= PR_HIRES_bm;
 	PR.PRPD |= PR_HIRES_bm;
 	PR.PRPE |= PR_HIRES_bm;
-
-	#if NESTING_TEST == 0
-	PR.PRPD |= PR_TC0_bm;		// TCD0 off
-	PR.PRPD |= PR_TC1_bm;		// TCD1 off
-	#endif
-
-	#if SERIAL_SIMULATION == 0
-	// TCC0 is tick timer, always on
-	PR.PRPC |= PR_TC1_bm;       // TCC1 off
-	PR.PRPE |= PR_TC0_bm;		// TCE0 off
-	// TCE1 does not exist in 32A4
-	#endif
 
 	// disable SPI, TWI
 	//
