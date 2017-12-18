@@ -10,12 +10,44 @@
 #include "all.h"
 #include "string.h"
 
+resetReason_t getResetReason(void) {
+	resetReason_t returnValue = RESETREASON_POWERONRESET;
+	// software reset ?
+	if( RST.STATUS & RST_SRF_bm )
+	{
+		// reset this bit
+		RST.STATUS = RST_SRF_bm;
+		returnValue = RESETREASON_SOFTWARERESET;
+	}
+	// power on reset ?
+	else if( RST.STATUS & RST_PORF_bm)
+	{
+		// reset this bit
+		RST.STATUS = RST_PORF_bm;
+		returnValue = RESETREASON_POWERONRESET;
+	}
+	// debugger reset ?
+	else if( RST.STATUS & RST_PDIRF_bm)
+	{
+		// reset this bit
+		RST.STATUS = RST_PDIRF_bm;
+		returnValue = RESETREASON_DEBUGGERRESET;
+	}
+	// external reset ?
+	else if( RST.STATUS & RST_EXTRF_bm)
+	{
+		// reset this bit
+		RST.STATUS = RST_EXTRF_bm;
+		returnValue = RESETREASON_EXTERNALRESET;
+	}
+	return returnValue;
+}
+
 void insert_c(char* str,u8 pos,char c)
 {
 	u8 len=strlen(str);
 	u8 i;
 
-	//TODO make it a universal macro
 	if(str<(char *)0x2000 && str>=(char *)0x3000)
 		error(ERR_INVALID_STRING_ADDRESS);	
 
@@ -32,7 +64,6 @@ void insert_c(char* str,u8 pos,char c)
 // As a preparation, write a '\0' at the end of the string.
 // If you have done this, you may use this function to check 
 // whether the 0 is still there (or overwritten).
-//
 void strPrep(char* str,u8 len)
 {
 	// is the string in the allowed ram address range?
@@ -53,7 +84,6 @@ void strCheck(char* str,u8 len)
 
 // Calculate the checksum of a datagram.
 // The string must be without the leading '$' and trailing '*' !
-//
 u8 calcChksum(char* datagramStr)
 {
 	u8 chksum=0;
@@ -66,33 +96,19 @@ u8 calcChksum(char* datagramStr)
 	return chksum;
 }
 
-
 // datagram state machine handlers
-//
 void sm_init(dgStateMaschine_t* sm)
 {
 	sm->state = outside;
 }
 
-
 static bool internalSetState(dgStateMaschine_t* sm, char cChar);
 
-
 // returns false if the checksum is not as expected.
-//
 bool sm_setState(dgStateMaschine_t* sm, char cChar)
 {
 	return internalSetState(sm, cChar);
 }
-
-// returns true if end of datagram reached
-//
-/*
-bool sm_isEom(dgStateMaschine_t* sm, char cChar)
-{
-
-}
-*/
 
 static bool internalSetState(dgStateMaschine_t* sm, char cChar)
 {

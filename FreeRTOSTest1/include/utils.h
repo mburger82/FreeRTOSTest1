@@ -10,6 +10,16 @@
 #ifndef _utils_include_h_
 #define _utils_include_h_
 
+typedef enum resetReason
+{
+	RESETREASON_SOFTWARERESET,
+	RESETREASON_POWERONRESET,
+	RESETREASON_DEBUGGERRESET,
+	RESETREASON_EXTERNALRESET,
+} resetReason_t;
+
+resetReason_t getResetReason(void);
+
 void dezimalPkt(char* str);
 void dezimalPkt2(char* str);
 void insert_c(char* str,u8 pos,char c);
