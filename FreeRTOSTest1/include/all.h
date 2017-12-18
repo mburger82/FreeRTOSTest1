@@ -27,6 +27,7 @@
 #include "StackMacros.h"
 
 //own
+#include "log.h"
 #include "mydefs.h"
 #include "initializations.h"
 #include "taskPrototypes.h"
