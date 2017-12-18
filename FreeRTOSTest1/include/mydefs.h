@@ -17,14 +17,6 @@
 #define SERIAL_CHECK_SEND		1   // Check datagrams while sending (works with and without simulation mode).
 									// This is for testing only, it adds runtime overhead and no functionality!
 
-// set the following three defines to 0 if you want to run the demo on real hardware with real usarts:
-//
-#define SERIAL_SIMULATION		0   //  for testing only if no real data source is available
-#define SERIAL_SIMULATION_C1	0	//  9600 USART-C1
-#define SERIAL_SIMULATION_E0	0	// 38400 USART-E0    
-
-#define NESTING_TEST			0   // to test interrupt nesting (non API-calling ISRs)
-
 #define SERIAL_PORT_BUFFER_LEN	 82  // each serial port has a buffer queue
 #define CHANNEL_QUEUE_LENGTH	164  // each channel has output queue
 
