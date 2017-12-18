@@ -42,25 +42,10 @@ u32 bytesReceived_E0;
 u32 bytesReceived_C1;
 u32 bytesReceived_C0;
 u32 bytesSent_C0;
-/*
-void sendData(void) {
-	USART_TXBuffer_PutByte(&USARTC0_data, 'Z', portMAX_DELAY);
-	USART_TXBuffer_PutByte(&USARTC0_data, 'u', portMAX_DELAY);
-	USART_TXBuffer_PutByte(&USARTC0_data, 'k', portMAX_DELAY);
-	USART_TXBuffer_PutByte(&USARTC0_data, 'u', portMAX_DELAY);
-	USART_TXBuffer_PutByte(&USARTC0_data, 'n', portMAX_DELAY);
-	USART_TXBuffer_PutByte(&USARTC0_data, 'f', portMAX_DELAY);
-	USART_TXBuffer_PutByte(&USARTC0_data, 't', portMAX_DELAY);
-	USART_TXBuffer_PutByte(&USARTC0_data, 's', portMAX_DELAY);
-	USART_TXBuffer_PutByte(&USARTC0_data, 't', portMAX_DELAY);
-	USART_TXBuffer_PutByte(&USARTC0_data, 'a', portMAX_DELAY);
-	USART_TXBuffer_PutByte(&USARTC0_data, 'g', portMAX_DELAY);
-}
-*/
+
 void vUSARTC0_Receive(void *pvParameters) {
 	(void) pvParameters;
 	uint8_t dataByte;
-
 	bytesReceived_C0 = 0;
 
 	for(;;) 

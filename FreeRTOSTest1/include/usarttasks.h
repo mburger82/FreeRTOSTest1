@@ -14,8 +14,5 @@ void vUSARTC0_Send(void *pvParameters);
 void vUSARTC1_Receive(void *pvParameters);
 void vUSARTE0_Receive(void *pvParameters);
 void initChannelQueues(void);
-
-//void sendData(void)
-
 #endif // _USARTTASKS_H_
 
