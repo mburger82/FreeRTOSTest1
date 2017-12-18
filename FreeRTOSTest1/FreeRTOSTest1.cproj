@@ -295,12 +295,6 @@
     <Compile Include="source\mem_check.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="source\nested_isr.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="source\serial_simulation.c">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="source\usarttasks.c">
       <SubType>compile</SubType>
     </Compile>
