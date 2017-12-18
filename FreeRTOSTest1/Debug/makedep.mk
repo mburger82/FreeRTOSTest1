@@ -36,10 +36,6 @@ source\main.c
 
 source\mem_check.c
 
-source\nested_isr.c
-
-source\serial_simulation.c
-
 source\usarttasks.c
 
 source\utils.c

@@ -59,8 +59,6 @@ C_SRCS +=  \
 ../source/initializations.c \
 ../source/main.c \
 ../source/mem_check.c \
-../source/nested_isr.c \
-../source/serial_simulation.c \
 ../source/usarttasks.c \
 ../source/utils.c
 
@@ -89,8 +87,6 @@ source/errorHandlers.o \
 source/initializations.o \
 source/main.o \
 source/mem_check.o \
-source/nested_isr.o \
-source/serial_simulation.o \
 source/usarttasks.o \
 source/utils.o
 
@@ -112,8 +108,6 @@ source/errorHandlers.o \
 source/initializations.o \
 source/main.o \
 source/mem_check.o \
-source/nested_isr.o \
-source/serial_simulation.o \
 source/usarttasks.o \
 source/utils.o
 
@@ -135,8 +129,6 @@ source/errorHandlers.d \
 source/initializations.d \
 source/main.d \
 source/mem_check.d \
-source/nested_isr.d \
-source/serial_simulation.d \
 source/usarttasks.d \
 source/utils.d
 
@@ -158,8 +150,6 @@ source/errorHandlers.d \
 source/initializations.d \
 source/main.d \
 source/mem_check.d \
-source/nested_isr.d \
-source/serial_simulation.d \
 source/usarttasks.d \
 source/utils.d
 
@@ -177,10 +167,6 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
-
-
-
-
 
 
 
