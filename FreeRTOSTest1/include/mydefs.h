@@ -17,8 +17,8 @@
 #define SERIAL_CHECK_SEND		1   // Check datagrams while sending (works with and without simulation mode).
 									// This is for testing only, it adds runtime overhead and no functionality!
 
-#define SERIAL_PORT_BUFFER_LEN	 82  // each serial port has a buffer queue
-#define CHANNEL_QUEUE_LENGTH	164  // each channel has output queue
+#define SERIAL_PORT_BUFFER_LEN	100  // each serial port has a buffer queue
+#define CHANNEL_QUEUE_LENGTH	200  // each channel has output queue
 
 // These defines are for the real UARTs
 // The interrupt level used here MUST NOT be higher than configMAX_SYSCALL_INTERRUPT_PRIORITY !
