@@ -3,6 +3,7 @@
  *
  * Created: 14.11.2017 17:52:04
  * Author : Martin Burger
+ * Version 0.1 - 19.12.2017 MB
  */ 
 
 #include "all.h"
@@ -13,23 +14,6 @@ extern u8 __heap_start;
 	
 xTaskHandle hLedBlink;
 xTaskHandle hEdulog;
-/*
-// task handles
-xTaskHandle hUSARTC0_Send;
-xTaskHandle hUSARTC0_Receive;
-
-//xTaskHandle hUSARTC1_Send;
-xTaskHandle hUSARTC1_Receive;
-
-xTaskHandle hUSARTD0_Send;
-//xTaskHandle hUSARTD0_Receive;
-
-xTaskHandle hUSARTD1_Receive;
-
-xTaskHandle hUSARTE0_Receive;
-
-xTaskHandle hSwitchPrios;
-*/
 
 
 extern void vApplicationIdleHook( void );
