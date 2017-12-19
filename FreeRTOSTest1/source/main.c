@@ -5,7 +5,7 @@
  * Author : Martin Burger
  * Version 0.1 - 19.12.2017 MB
  */ 
-
+#include <math.h>
 #include "all.h"
 #include "mem_check.h"
 extern u8 __bss_start;
@@ -27,7 +27,7 @@ u32 idleCnt;
 //
 void vApplicationIdleHook( void )
 {
-	
+		
 	idleCnt++;
 
 	#if RUNTIME_CHECKS == 1
@@ -113,27 +113,47 @@ int main(void)
 void vLedBlink(void *pvParameters) {
 	(void) pvParameters;
 	uint32_t countvar = 0;
+	uint16_t ledValue = 0;
+	float twoPi = M_PI * 2;
+	uint16_t angle = 0;
 	PORTF.DIRSET = PIN0_bm; //LED1
 	PORTF.DIRSET = PIN1_bm; //LED2
 	PORTF.DIRSET = PIN2_bm; //LED3
 	PORTF.DIRSET = PIN3_bm; //LED4
 	
-	PORTE.DIRSET = PIN0_bm; //LED5
+	PORTE.DIRSET = PIN0_bm; //LED5 PWM
 	PORTE.DIRSET = PIN1_bm; //LED6
 	PORTE.DIRSET = PIN2_bm; //LED7
 	PORTE.DIRSET = PIN3_bm; //LED8
+	
+	PORTE.OUT = 0x0F;
+	PORTF.OUT = 0x0F;
+	
+	TC0_ConfigClockSource(&TCE0, TC_CLKSEL_DIV2_gc);
+	TC0_ConfigWGM(&TCE0, TC_WGMODE_SINGLESLOPE_gc);
+	TC0_EnableCCChannels(&TCE0, TC0_CCAEN_bm);
+	TC0_EnableCCChannels(&TCE0, TC0_CCBEN_bm);
+	TC_SetPeriod(&TCE0, 1600);
+	TC_SetCompareA(&TCE0, 1500);
 
 	for(;;) {
-		PORTE.OUT = 0x0F;
-		PORTF.OUT = 0x0F;
-		vTaskDelay(500 / portTICK_RATE_MS);
-		PORTE.OUT = 0x00;
-		PORTF.OUT = 0x00;
-		countvar++;
-		edulog("LEDTask count: %d\n", countvar);
-		edulog("Free Memory: %dBytes\n", get_mem_unused());
-		edulog("Free Heap: %dBydes\n", xPortGetFreeHeapSize());
-		vTaskDelay(500 / portTICK_RATE_MS);
+		angle++;
+		if(angle == 360)
+			angle = 0;
+		ledValue = 800.0 * (1+sin(angle/360.0*twoPi));
+		TC_SetCompareA(&TCE0, ledValue);
+		TC_SetCompareB(&TCE0, 1600-ledValue);
+		//PORTE.OUT = 0x0F;
+		//PORTF.OUT = 0x0F;
+		//vTaskDelay(500 / portTICK_RATE_MS);
+		//PORTE.OUT = 0x00;
+		//PORTF.OUT = 0x00;
+		//countvar++;
+// 		edulog("LEDTask count: %d\n", countvar);
+// 		edulog("Free Memory:   %dBytes\n", get_mem_unused());
+// 		edulog("Free Heap:     %dBydes\n", xPortGetFreeHeapSize());
+		//vTaskDelay(500 / portTICK_RATE_MS);
+		vTaskDelay(10 / portTICK_RATE_MS);
 	}
 }
 
