@@ -10,6 +10,8 @@
 
 #include "all.h" 
 
+#define EDULOG_STACKSIZE	250
+
 static void ftoa_fixed(char *buffer, double value);
 static void ftoa_sci(char *buffer, double value);
 static int my_vprintf(char const *fmt, va_list arg);
@@ -21,9 +23,9 @@ xQueueHandle vEdulog_channelQueue;
 
 void vEdulogtask(void *pvParameters) {
 	(void) pvParameters;
-	uint8_t      dataByte;
+	static uint8_t      dataByte;
 	for(;;) {
-		if(xQueueReceive(vEdulog_channelQueue, &dataByte, comNO_BLOCK)) {
+		if(xQueueReceive(vEdulog_channelQueue, &dataByte, portMAX_DELAY)) {
 			
 			if(!USART_TXBuffer_PutByte(&USARTC0_data, dataByte, portMAX_DELAY))
 				error(ERR_QUEUE_SEND_FAILED);
@@ -43,11 +45,11 @@ void initEdulog(void) {
 	// Init Edulog Queue
 	const unsigned portBASE_TYPE chQueueLength = CHANNEL_QUEUE_LENGTH;
 	if((vEdulog_channelQueue = xQueueCreate(chQueueLength, (unsigned portBASE_TYPE) sizeof(signed char))) == NULL)
-	error(ERR_QUEUE_CREATE_HANDLE_NULL);
+		error(ERR_QUEUE_CREATE_HANDLE_NULL);
 
 	//-----------------------------
 	// Create Edulog Task
-	xTaskCreate( vEdulogtask, (const char *) "edulogTask", configMINIMAL_STACK_SIZE, NULL, 1,&hEdulog);
+	xTaskCreate( vEdulogtask, (const char *) "edulogTask", EDULOG_STACKSIZE, NULL, 1,&hEdulog);
 }
 
 int edulog(char const *fmt, ...) {
@@ -72,8 +74,15 @@ static int my_vprintf(char const *fmt, va_list arg) {
 	char ch;
 	int length = 0;
 
-	char buffer[30];
-	char str[100];
+	static char buffer[30];
+	static char str[100];
+	for(int i = 0; i < 30; i++) {
+		buffer[i] = 0x00;
+	}
+	for(int i = 0; i < 100; i++) {
+		str[i] = 0x00;
+	}
+
 
 	xHigherPriorityTaskWoken = pdFALSE;
 
