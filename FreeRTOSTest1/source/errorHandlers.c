@@ -42,19 +42,20 @@ void checkAllStacks(void)
 
 	minStackSpace_Idle	= uxTaskGetStackHighWaterMark( ( xTaskHandle ) NULL );
 	
-	minStackSpace_C0s 	= uxTaskGetStackHighWaterMark( ( xTaskHandle ) hUSARTC0_Send );
+	//minStackSpace_C0s 	= uxTaskGetStackHighWaterMark( ( xTaskHandle ) hUSARTC0_Send );
 	
-	minStackSpace_C1 	= uxTaskGetStackHighWaterMark( ( xTaskHandle ) hUSARTC1_Receive );
+	//minStackSpace_C1 	= uxTaskGetStackHighWaterMark( ( xTaskHandle ) hUSARTC1_Receive );
 	
-	minStackSpace_E0 	= uxTaskGetStackHighWaterMark( ( xTaskHandle ) hUSARTE0_Receive );
-	
+	//minStackSpace_E0 	= uxTaskGetStackHighWaterMark( ( xTaskHandle ) hUSARTE0_Receive );
+	/*
 	if(minStackSpace_C0s<min ||
 	   minStackSpace_C1<min  || 
 	   minStackSpace_E0<min  || 
 	   minStackSpace_Idle<min)
 	{
 		error(ERR_LOW_HEAP_SPACE);
-	}	
+	}
+	*/	
 }
 #endif
 
