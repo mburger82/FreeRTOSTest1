@@ -94,15 +94,6 @@ typedef struct Usart_and_queue
 	dgStateMaschine_t sm;
 	#endif
 
-	#if SERIAL_SIMULATION == 1
-	//
-	// status variables to control the data sentences in simulation mode:
-	//
-	u8 RecDataByte;  // used to send the test-datagram
-	u32 rCounter;
-	u32 sCounter;
-	#endif
-
 } USART_data_t;
 
 
@@ -304,9 +295,6 @@ bool USART_RXBufferData_Available(USART_data_t * usart_data);
 bool USART_RXBuffer_GetByte(USART_data_t * usart_data, uint8_t *data, portTickType xBlockTime);
 int  USART_receiveStr(USART_data_t * usart_data, int cnt, char *str, portTickType xBlockTime);
 
-#if SERIAL_SIMULATION == 1
-bool USART_RXComplete_sim(USART_data_t * usart_data);
-#endif
 bool USART_RXComplete(USART_data_t * usart_data);
 bool USART_DataRegEmpty(USART_data_t * usart_data);
 

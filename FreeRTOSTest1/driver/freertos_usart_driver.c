@@ -69,14 +69,6 @@
 
 #include "all.h"
 
-
-#if SERIAL_SIMULATION == 1
-
-static const char pcontent[] PROGMEM = "$ABCDEFGH*08\r\n"; // test datagram 
-
-#endif
-
-
 /*! \brief Initializes buffer and selects what USART module to use.
  *
  *  Initializes receive and transmit buffer and selects what USART module to use,
@@ -114,15 +106,6 @@ void USART_InterruptDriver_Initialize(USART_data_t * usart_data,
 	#if SERIAL_CHECK_SEND == 1
 	sm_init(&(usart_data->sm)); // init the datagram state machine
  	#endif
-
-	#if SERIAL_SIMULATION == 1
-	//
-	// state variables for the simulation and stability tests only.
-	//
-	usart_data->RecDataByte  = 0;
-	usart_data->rCounter     = 0;
-	usart_data->sCounter     = 0;
-	#endif
 }
 
 /*! \brief Set USART DRE interrupt level.
@@ -241,35 +224,6 @@ bool USART_RXBuffer_GetByte(USART_data_t * usart_data, uint8_t *data, portTickTy
  *
  *  \param usart_data      The USART_data_t struct instance.
  */
-
-#if SERIAL_SIMULATION == 1
-
-bool USART_RXComplete_sim(USART_data_t * usart_data)
-{
-	signed char cChar;
-	signed portBASE_TYPE xTaskWokenBySend = pdFALSE;
-
-	// Get the character and post it on the queue of Rxed characters.
-	// If the post causes a task to wake force a context switch as the woken task
-	// may have a higher priority than the task we have interrupted.
-	//
-	cChar = pgm_read_byte_near(&pcontent[usart_data->RecDataByte]);
-
-	if(xQueueSendFromISR( usart_data->xRxQueue, &cChar, &xTaskWokenBySend )!=pdTRUE)
-	{
-		errorNonFatal(ERR_BYTE_LOST_ON_RECEIVE);
-	}
-
-	if(cChar == '\n')
-		usart_data->RecDataByte = 0;
-	else
-		usart_data->RecDataByte++;
-
-	usart_data->rCounter++;
-	return xTaskWokenBySend; 
-}
-#endif
-
 bool USART_RXComplete(USART_data_t * usart_data)
 {
 	signed char cChar;
