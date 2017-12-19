@@ -7,14 +7,13 @@
 
 #include "all.h"
 #include "mem_check.h"
-//extern u8 __data_start;
-//extern u8 __data_end;
 extern u8 __bss_start;
 extern u8 __bss_end;
 extern u8 __heap_start;
 	
 xTaskHandle hLedBlink;
-
+xTaskHandle hEdulog;
+/*
 // task handles
 xTaskHandle hUSARTC0_Send;
 xTaskHandle hUSARTC0_Receive;
@@ -30,7 +29,7 @@ xTaskHandle hUSARTD1_Receive;
 xTaskHandle hUSARTE0_Receive;
 
 xTaskHandle hSwitchPrios;
-
+*/
 
 
 extern void vApplicationIdleHook( void );
@@ -98,7 +97,15 @@ int main(void)
 	vPortPreparation();
 	// Unused hardware modules are disabled to save power.
 	disableUnusedModules();
+	// Init edulog module
+	initEdulog();
 	
+	edulog("\n\n\n----------------------------------------------------------------\n");
+	edulog("FreeRTOS V9.0.0");
+	edulog("\nFree Stack-Space: %dBytes\n", freeSpaceOnGlobalStack);
+	edulog("----------------------------------------------------------------\n\n");
+	
+
 	xTaskCreate( vLedBlink, (const char *) "ledBlink", configMINIMAL_STACK_SIZE, NULL, 1,&hLedBlink);
 
 	// Check if there was more stack used than guessed (see above: MINIMUM_STACK_NEEDED). minimumStackLeft is the number of bytes between bss-end and global (non-rtos) stack.
@@ -125,7 +132,7 @@ int main(void)
 
 void vLedBlink(void *pvParameters) {
 	(void) pvParameters;
-
+	uint32_t countvar = 0;
 	PORTF.DIRSET = PIN0_bm; //LED1
 	PORTF.DIRSET = PIN1_bm; //LED2
 	PORTF.DIRSET = PIN2_bm; //LED3
@@ -142,7 +149,9 @@ void vLedBlink(void *pvParameters) {
 		vTaskDelay(500 / portTICK_RATE_MS);
 		PORTE.OUT = 0x00;
 		PORTF.OUT = 0x00;
-		vTaskDelay(500 / portTICK_RATE_MS);
+		countvar++;
+		edulog("LEDTask count: %d\n", countvar);
+		vTaskDelay(500 / portTICK_RATE_MS);		
 		//sendData();
 	}
 }
