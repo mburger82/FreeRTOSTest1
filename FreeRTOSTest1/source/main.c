@@ -60,7 +60,7 @@ void vApplicationIdleHook( void )
 //----------------------------------------------
 //
 int main(void)
-{
+{	
 	resetReason_t resetReason = getResetReason(); // knowing the reason for a reset may be of value if you want to log/track sporadically  occurring if you want to log/track sporadically  occurring
 	
 	size_t bytesLeft0 = xPortGetFreeHeapSize();
@@ -88,11 +88,7 @@ int main(void)
 		error(ERR_HEAP_TOO_LARGE); // decrease configTOTAL_HEAP_SIZE!
 	}
 	//Init clock
-	vInitClock();
-	// all usart preparation including port pin setup
-	initUsarts();
-	// prepare the queues that hold the data that is ready to be sent out
-	initChannelQueues();
+	vInitClock();	
 	//Init port settings (other than serial)
 	vPortPreparation();
 	// Unused hardware modules are disabled to save power.
@@ -100,10 +96,10 @@ int main(void)
 	// Init edulog module
 	initEdulog();
 	
-	edulog("\n\n\n----------------------------------------------------------------\n");
+	edulog("\n\n\n-------------------------------\n");
 	edulog("FreeRTOS V9.0.0");
 	edulog("\nFree Stack-Space: %dBytes\n", freeSpaceOnGlobalStack);
-	edulog("----------------------------------------------------------------\n\n");
+	edulog("-------------------------------\n\n");
 	
 
 	xTaskCreate( vLedBlink, (const char *) "ledBlink", configMINIMAL_STACK_SIZE, NULL, 1,&hLedBlink);
@@ -151,8 +147,9 @@ void vLedBlink(void *pvParameters) {
 		PORTF.OUT = 0x00;
 		countvar++;
 		edulog("LEDTask count: %d\n", countvar);
-		vTaskDelay(500 / portTICK_RATE_MS);		
-		//sendData();
+		edulog("Free Memory: %dBytes\n", get_mem_unused());
+		edulog("Free Heap: %dBydes\n", xPortGetFreeHeapSize());
+		vTaskDelay(500 / portTICK_RATE_MS);
 	}
 }
 
