@@ -280,9 +280,6 @@
     <Compile Include="include\taskPrototypes.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="include\usarttasks.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="include\utils.h">
       <SubType>compile</SubType>
     </Compile>
@@ -299,9 +296,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="source\mem_check.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="source\usarttasks.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="source\utils.c">
