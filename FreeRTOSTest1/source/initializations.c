@@ -16,7 +16,7 @@ extern volatile tskTCB * volatile pxCurrentTCB;
 
 
 // USART data structs
-USART_data_t USARTC0_data;
+
 USART_data_t USARTC1_data;
 USART_data_t USARTE0_data;
 
@@ -40,15 +40,7 @@ void initUsarts(void)
 	// The demo code has two serial receivers. The data is multiplexed into one single
 	// transmitter output.
 
-	//-----------------------------
-	// USARTC0 setup ( RXD0, TXD0 )
-
-	/* PC3 (TXD0) as output. */
-	PORTC.DIRSET = PIN3_bm;
-	/* PC2 (RXD0) as input. */
-	PORTC.DIRCLR = PIN2_bm;
-
-	usart_setup( &USARTC0_data, &USARTC0, BSEL_57600, BSCALE_57600, receivetransmit,RX_INTRPT_LEVEL,TX_INTRPT_LEVEL);
+	
 
 	//-----------------------------
 	// USARTC1 setup ( RXD1, TXD1 )
