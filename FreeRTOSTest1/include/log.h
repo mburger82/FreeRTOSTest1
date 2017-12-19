@@ -9,7 +9,7 @@
 #ifndef LOG_H_
 #define LOG_H_
 
-
+void initEdulog(void);
 int edulog(char const *fmt, ...);
 
 
