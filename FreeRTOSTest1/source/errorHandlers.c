@@ -12,18 +12,13 @@
 typedef void tskTCB;
 extern volatile tskTCB * volatile pxCurrentTCB;
 
-extern xTaskHandle hUSARTC0_Send;
-extern xTaskHandle hUSARTC1_Receive;
-extern xTaskHandle hUSARTE0_Receive;
-
+extern xTaskHandle hEdulog;
+extern xTaskHandle hLedBlink;
 unsigned portBASE_TYPE minStackSpace_Idle;
-unsigned portBASE_TYPE minStackSpace_C0s;
-unsigned portBASE_TYPE minStackSpace_C1;
-unsigned portBASE_TYPE minStackSpace_E0;
-
+unsigned portBASE_TYPE minStackSpace_Edulog;
+unsigned portBASE_TYPE minStackSpace_LedBlink;
 
 // local prototypes
-//
 void vApplicationStackOverflowHook( xTaskHandle *pxTask, signed portCHAR *pcTaskName );
 void vApplicationMallocFailedHook( void );
 
@@ -33,7 +28,6 @@ void vApplicationMallocFailedHook( void );
 // Disabling this reduces power consumption 
 // from 32mA to 23 mA if the CPU is allowed to 
 // sleep instead.
-//
 #if RUNTIME_CHECKS == 1
 
 void checkAllStacks(void)
@@ -42,20 +36,17 @@ void checkAllStacks(void)
 
 	minStackSpace_Idle	= uxTaskGetStackHighWaterMark( ( xTaskHandle ) NULL );
 	
-	//minStackSpace_C0s 	= uxTaskGetStackHighWaterMark( ( xTaskHandle ) hUSARTC0_Send );
-	
-	//minStackSpace_C1 	= uxTaskGetStackHighWaterMark( ( xTaskHandle ) hUSARTC1_Receive );
-	
-	//minStackSpace_E0 	= uxTaskGetStackHighWaterMark( ( xTaskHandle ) hUSARTE0_Receive );
-	/*
-	if(minStackSpace_C0s<min ||
-	   minStackSpace_C1<min  || 
-	   minStackSpace_E0<min  || 
-	   minStackSpace_Idle<min)
+	minStackSpace_Edulog = uxTaskGetStackHighWaterMark((xTaskHandle) hEdulog);
+
+	minStackSpace_LedBlink = uxTaskGetStackHighWaterMark((xTaskHandle) hLedBlink);
+
+	if(minStackSpace_Edulog<min ||
+	   minStackSpace_LedBlink<min ||
+	   minStackSpace_Idle<min)	
 	{
 		error(ERR_LOW_HEAP_SPACE);
 	}
-	*/	
+	
 }
 #endif
 
